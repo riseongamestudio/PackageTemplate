@@ -25,7 +25,13 @@ Odin không có trên UPM nên phải cài vào project trước. Thiếu Odin t
 `RiseOn.PackageName.Requirements`.
 
 <!--
-Mỗi gói trong `dependencies` của package.json một hàng, cùng version, cột "Cách có" ghi "Tự cài theo `package.json`".
+Mỗi gói trong `dependencies` của package.json một hàng, cùng version, cột "Cách có" ghi "Tự cài theo
+`package.json`".
+Pack dùng Odin: mọi asmdef thêm sau (Editor, từng nền tảng...) mà dùng Sirenix, hoặc tham chiếu một assembly đã có
+`ODIN_INSPECTOR` trong `defineConstraints` (của pack này hay pack khác như `RiseOn.Utils`, kể cả gián tiếp), cũng
+thêm `ODIN_INSPECTOR` vào `defineConstraints`, giữ các constraint khác như `UNITY_EDITOR`. Thiếu một chỗ thì
+project không có Odin báo hàng loạt lỗi CS0246 thay vì một dòng từ `RiseOn.PackageName.Requirements`. Trước khi
+phát hành, thử pack trong project không có Odin như README của repo upm hướng dẫn.
 Pack không dùng Odin: xóa hàng Odin và câu dưới bảng, xóa thư mục `Editor/Requirements/`, bỏ `ODIN_INSPECTOR` khỏi
 `defineConstraints` của `Runtime/RiseOn.PackageName.asmdef`.
 -->
