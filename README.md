@@ -21,12 +21,16 @@ Package `com.riseon.packagename`, namespace `RiseOn.PackageName`.
 | Unity 6000.3 | | Bản đang dùng để phát triển |
 | [Odin Inspector](https://odininspector.com) | Cài tay từ Asset Store | <!-- Phần nào của pack dùng Odin --> |
 
-Odin không có trên UPM nên phải cài vào project trước. Thiếu Odin thì project báo một lỗi từ
-`RiseOn.PackageName.Requirements`.
+Odin không có trên UPM nên phải cài vào project trước. Thiếu Odin thì project báo một
+lỗi từ `RiseOn.PackageName.Requirements`.
 
 <!--
 Mỗi gói trong `dependencies` của package.json một hàng, cùng version, cột "Cách có" ghi "Tự cài theo
-`package.json`".
+`package.json`", thêm nơi lấy (", từ OpenUPM", ", từ registry RiseOn"...) khi gói cần một registry hay scope
+ngoài `com.riseon` và Unity Registry.
+Có hàng "Tự cài" như vậy, trừ khi mọi hàng đó là module có sẵn của Unity, thì đoạn dưới bảng mở đầu bằng: "Tự cài"
+là Package Manager tự lấy theo version từ Unity Registry và các registry khai trong manifest, cả khi cài pack bằng
+git URL.
 Mọi pack RiseOn đều cần Odin, kể cả pack không dùng nó, để khỏi phải xét asmdef nào phụ thuộc Odin: mọi asmdef thêm
 sau (Editor, từng nền tảng...) cũng thêm `ODIN_INSPECTOR` vào `defineConstraints`, giữ các constraint khác như
 `UNITY_EDITOR`; chỉ `Editor/Requirements/` không có. Thiếu một chỗ thì assembly đó vẫn compile khi project không có
@@ -59,10 +63,17 @@ Odin, cột "Dùng cho" ghi "Pack không dùng Odin, nhưng mọi pack RiseOn đ
 **Git URL**: *Package Manager → + → Add package from git URL*:
 
 ```
-https://github.com/riseongamestudio/PackageName.git#v1.0.0
+https://github.com/riseongamestudio/PackageName.git
 ```
 
-<!-- Git URL không kéo theo phụ thuộc com.riseon: liệt kê ở đây những gói phải cài trước. -->
+<!--
+Có phụ thuộc thì câu trên mở đầu bằng "phụ thuộc vẫn lấy theo version từ registry", vì Package Manager
+lấy phụ thuộc của gói cài bằng git URL từ Unity Registry và các registry khai trong manifest như mọi gói khác:
+- có gói từ registry khác (OpenUPM...): nói manifest cần registry đó như ví dụ trên;
+- có gói com.riseon: liệt kê cả gói gián tiếp, theo thứ tự cài, "lấy từ registry RiseOn, hoặc cài bằng git URL
+  trước theo thứ tự này";
+- có SDK chỉ ở registry RiseOn (Firebase, AppsFlyer): nói manifest cần đủ các registry như ví dụ trên.
+-->
 
 **Thư mục local**: `"com.riseon.packagename": "file:D:/path/to/PackageName"`.
 

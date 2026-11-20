@@ -1,8 +1,9 @@
 {
   "name": "com.riseon.packagename",
   "version": "1.0.0",
-  "displayName": "Package Name",
+  "displayName": "RiseOn PackageName",
   "description": "One sentence on what the package does",
+  "unity": "6000.3",
   "documentationUrl": "https://github.com/riseongamestudio/PackageName/blob/v1.0.0/README.md",
   "author": {
     "name": "RiseOn"
